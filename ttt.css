@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* main container */
+.container{
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0, 0.25);
+    text-align: center;
+    width: 380px;
+}
+
+h1{
+    margin-bottom: 25px;
+    font-size: 42px;
+    font-family: cursive;
+    color: #6a11cb;
+    text-shadow: 2px 2px 8px rgba(0,0,0, 0.2);
+    
+}
+
+/* player input form */
+.form-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+input,select{
+    
+    padding: 12px;
+    margin-bottom: 10px;
+    font-size:16px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    transition: 0.2s;
+}
+input:focus,
+select:focus{
+
+    border-color: #6a11cb;
+
+    box-shadow:
+    0 0 8px rgba(106,17,203,0.3);
+}
+#mode{
+    cursor: pointer;
+}
+
+button{
+    padding:12px;
+    font-size:16px;
+    border:none;
+    border-radius:10px;
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    color:white;
+    cursor:pointer;
+    transition:0.25;
+}
+button:hover{
+    transform: scale(1.03);
+    opacity: 0.95;
+}
+  
+.board{
+    gap: 5px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3,100px);
+}
+.cell{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #6a11cb;
+    background: #fdfdfd;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* will work for cells which do not have winner class so initially work for everyone normally  */
+.cell:not(.winner):hover{
+    background: #efe7ff;
+    transform: scale(1.03);
+}
+.message{
+    margin:20px 0;
+    font-size:20px;
+    font-weight:bold;
+    color: #243b55;
+    min-height: 30px;
+}
+#restartBtn{
+    margin-top: 20px;
+    width:100%
+}
+/* adding animation for winning pattern */
+.winner{
+    background: #4caf50;
+    color:white;
+    animation: glow 0.8s infinite alternate;
+}
+@keyframes glow{
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.1);
+    }
+}
+
+/* to make it responsive we use media so it will adjust accordingly according to change in screen size */
+@media(max-width:450px){
+    .container{
+        width: 95%;
+    }
+    .board{
+        grid-template-columns: repeat(3,85px);
+    }
+    .cell{
+        width: 85px;
+        height: 85px;
+    }
+}
